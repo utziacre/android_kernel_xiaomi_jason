@@ -1292,4 +1292,10 @@ config TOUCHSCREEN_FOCAL_FT8719
 
 source "drivers/input/touchscreen/st/Kconfig"
 
+config SWEEP2SLEEP
+        tristate "Sweep to put device to sleep"
+        default y
+        help
+          Say Y here to support sweep2sleep
+
 endif
