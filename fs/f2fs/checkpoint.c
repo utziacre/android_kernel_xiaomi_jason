@@ -1217,6 +1217,14 @@ retry_flush_dents:
 		goto retry_flush_quotas;
 	}
 
+	/* f2fs_map_block() grabs node_change before allocating blocks */
+	if (__need_flush_quota(sbi)) {
+		up_write(&sbi->node_change);
+		f2fs_unlock_all(sbi);
+		cond_resched();
+		goto retry_flush_quotas;
+	}
+
 retry_flush_nodes:
 	down_write(&sbi->node_write);
 
