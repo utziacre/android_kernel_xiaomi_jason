@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 /* Copyright (c) 2012-2018, 2020, The Linux Foundation. All rights reserved.
-=======
-/* Copyright (c) 2012-2018, The Linux Foundation. All rights reserved.
  * Copyright (C) 2019 XiaoMi, Inc.
->>>>>>> b460bf11054c... msm: mdss: Import Xiaomi Mi board changes
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
