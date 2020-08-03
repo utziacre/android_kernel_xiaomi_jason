@@ -766,9 +766,6 @@ static int adreno_of_get_power(struct adreno_device *adreno_dev,
 	device->pwrctrl.bus_control = of_property_read_bool(node,
 		"qcom,bus-control");
 
-	device->pwrctrl.input_disable = of_property_read_bool(node,
-		"qcom,disable-wake-on-touch");
-
 	return 0;
 }
 
@@ -882,21 +879,6 @@ static int adreno_probe(struct platform_device *pdev)
 
 	/* Initialize coresight for the target */
 	adreno_coresight_init(adreno_dev);
-
-#ifdef CONFIG_INPUT
-	if (!device->pwrctrl.input_disable) {
-		adreno_input_handler.private = device;
-		/*
-		 * It isn't fatal if we cannot register the input handler.  Sad,
-		 * perhaps, but not fatal
-		 */
-		if (input_register_handler(&adreno_input_handler)) {
-			adreno_input_handler.private = NULL;
-			KGSL_DRV_ERR(device,
-				"Unable to register the input handler\n");
-		}
-	}
-#endif
 
 	place_marker("M - DRIVER GPU Ready");
 
