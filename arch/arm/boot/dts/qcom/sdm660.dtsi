@@ -292,9 +292,6 @@
 
 		CPU_COST_0: core-cost0 {
 			busy-cost-data = <
-				181 680
-				258 703
-				319 730
 				401 774
 				440 803
 				501 857
@@ -319,9 +316,6 @@
 		};
 		CLUSTER_COST_0: cluster-cost0 {
 			busy-cost-data = <
-				181 4
-				258 5
-				319 7
 				401 9
 				440 9
 				501 11
@@ -1456,9 +1450,6 @@
 		qcom,governor-per-policy;
 
 		qcom,cpufreq-table-0 =
-			<  633600 >,
-			<  902400 >,
-			< 1113600 >,
 			< 1401600 >,
 			< 1536000 >,
 			< 1612800 >,
