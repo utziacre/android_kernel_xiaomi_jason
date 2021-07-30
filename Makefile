@@ -634,7 +634,8 @@ LTO_CFLAGS    := -flto -flto=jobserver -fipa-pta -fno-fat-lto-objects \
                  -fuse-linker-plugin -fwhole-program
 KBUILD_CFLAGS += $(LTO_CFLAGS) --param=max-inline-insns-auto=1000
 LTO_LDFLAGS   := $(LTO_CFLAGS) -Wno-lto-type-mismatch -Wno-psabi \
-                 -Wno-stringop-overflow -flinker-output=nolto-rel
+                 -Wno-stringop-overflow -flinker-output=nolto-rel \
+                  -Wno-stringop-overread
 LDFINAL       := $(CONFIG_SHELL) $(srctree)/scripts/gcc-ld $(LTO_LDFLAGS)
 AR            := $(CROSS_COMPILE)gcc-ar
 NM            := $(CROSS_COMPILE)gcc-nm
@@ -664,6 +665,8 @@ KBUILD_CFLAGS	+= $(call cc-disable-warning, psabi)
 KBUILD_CFLAGS	+= $(call cc-disable-warning, restrict)
 KBUILD_CFLAGS	+= $(call cc-disable-warning, stringop-overflow)
 KBUILD_CFLAGS	+= $(call cc-disable-warning, zero-length-bounds)
+KBUILD_CFLAGS	+= $(call cc-disable-warning, array-parameter)
+KBUILD_CFLAGS	+= $(call cc-disable-warning, stringop-overread)
 
 ifdef CONFIG_LD_DEAD_CODE_DATA_ELIMINATION
 KBUILD_CFLAGS	+= $(call cc-option,-ffunction-sections,)
